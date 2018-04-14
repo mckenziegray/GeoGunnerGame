@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class HitPoints : MonoBehaviour {
 
-	public int maxHitPoints;
-	private int currentHitPoints;
+	public int maxHP;
+	private int currentHP;
 	public int points;
 	public GameObject deathAnimation;
 
 	// Use this for initialization
 	void Start () {
-		this.currentHitPoints = maxHitPoints;
+		this.currentHP = maxHP;
 	}
 	
 	public void Damage (int damage)
 	{
 		Debug.Log(this.gameObject.ToString() + " took " + damage + " damage");
-		this.currentHitPoints -= damage;
-		Debug.Log(this.gameObject.ToString() + " has " + currentHitPoints + " HP remaining");
-		if (this.currentHitPoints <= 0) {
-			this.currentHitPoints = 0;
+		this.currentHP -= damage;
+		Debug.Log(this.gameObject.ToString() + " has " + currentHP + " HP remaining");
+		if (this.currentHP <= 0) {
+			this.currentHP = 0;
 			GameObject.FindWithTag ("GameController").GetComponent<GameController> ().addScore (points);
 			this.Die ();
 		}

@@ -1,4 +1,3 @@
 # GeoGunner (working title)
-Arcade-style shooter whose art design uses solid colors and simple geometric shapes because I'm a terrible artist.
-
-Made in Unity.
+Unity project.
+Arcade-style shooter with a simple art design using solid colors and basic geometric shapes because I'm a terrible artist.

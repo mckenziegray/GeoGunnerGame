@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public int[] waveSizes;
 
-	public int powerupSpawnPercent;
+	public float powerupSpawnPercent;
 	public GameObject PowerupShield;
 
 	public GameObject HPCellFull;
@@ -34,8 +34,7 @@ public class GameController : MonoBehaviour {
 	public int maxShields;
 	private GameObject[] shieldCells;
 	private int numShields;
-
-	public GameObject shield;
+	private ToggleDisplay shieldToggle;
 
 	private int score;
 	public Text scoreText;
@@ -45,8 +44,10 @@ public class GameController : MonoBehaviour {
 		score = 0;
 		updateScoreText ();
 
+		shieldToggle = GameObject.FindWithTag ("Player").GetComponent<ToggleDisplay> ();
+		shieldToggle.hide ();
 		playerHP = GameObject.FindWithTag ("Player").GetComponent<HitPoints> ();
-		HPCells = new GameObject[playerHP.maxHitPoints];
+		HPCells = new GameObject[playerHP.maxHP];
 		shieldCells = new GameObject[maxShields];
 		HPCellFull.GetComponent<SpriteRenderer> ().color = Color.green;
 		HPCellEmpty.GetComponent<SpriteRenderer> ().color = new Color (0.9f, 1f, 0.9f, 1f); //Pale green
@@ -78,7 +79,9 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < damageAmt; i++) {
 			if (numShields > 0) {
 				Destroy (shieldCells [--numShields].gameObject);
-			} 
+				if (numShields == 0)
+					shieldToggle.hide ();
+			}
 			else {
 				playerHP.Damage (1);
 				//replace full cell with empty cell
@@ -95,6 +98,8 @@ public class GameController : MonoBehaviour {
 
 	public void giveShield()
 	{
+		if (numShields == 0)
+			shieldToggle.show ();
 		if (numShields <= maxShields) {
 			Vector2 cellLocation = new Vector2 (HPBarPosition.x + (HPCellSpacing * (HPCells.Length + numShields)), HPBarPosition.y);
 			shieldCells [numShields] = Instantiate (ShieldCell, cellLocation, Quaternion.identity);
@@ -125,8 +130,8 @@ public class GameController : MonoBehaviour {
 		for (int i = 0; i < waveSizes [0]; i++) {
 			Vector2 spawnLocation = new Vector2 (spawnPosition.x, Random.Range (-spawnPosition.y, spawnPosition.y));
 
-			int r = Random.Range (0, 100);
-			if (r < powerupSpawnPercent)
+			int r = Random.Range (0, 10000);
+			if (r < powerupSpawnPercent * 100)
 				Instantiate (PowerupShield, spawnLocation, Quaternion.identity);
 			else {
 				r = Random.Range (0, 10000);
