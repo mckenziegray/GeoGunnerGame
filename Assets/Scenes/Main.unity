@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: '
+  m_Text: 
 --- !u!222 &155116986
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -244,8 +244,9 @@ MonoBehaviour:
   spawnWait: 0.5
   waveSizes: 320000003200000032000000320000003200000032000000320000003200000032000000
   powerupSpawnPercent: 10
-  PowerupShield: {fileID: 1571638536972862, guid: 80a235ec18fc8a74f9ffa4d6359f2aba,
-    type: 2}
+  powerups:
+  - {fileID: 1571638536972862, guid: 80a235ec18fc8a74f9ffa4d6359f2aba, type: 2}
+  - {fileID: 1609574692547610, guid: 8c9553f5cedc330429e498056de8abef, type: 2}
   HPCellFull: {fileID: 1242076236008164, guid: de8ef46eb20e42f4fac708d70b3fbe96, type: 2}
   HPCellEmpty: {fileID: 1668590735627650, guid: cf4507e226593674d9838ba2331765d3,
     type: 2}
@@ -367,6 +368,21 @@ Prefab:
     - target: {fileID: 4453304460718844, guid: b48f49139d89f854bb5df2080b4e13b3, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114591515572614458, guid: b48f49139d89f854bb5df2080b4e13b3,
+        type: 2}
+      propertyPath: startsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023133370339588, guid: b48f49139d89f854bb5df2080b4e13b3,
+        type: 2}
+      propertyPath: invincible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461058038833608, guid: b48f49139d89f854bb5df2080b4e13b3,
+        type: 2}
+      propertyPath: shotsPerSecond
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b48f49139d89f854bb5df2080b4e13b3, type: 2}

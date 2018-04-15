@@ -182,7 +182,7 @@ MonoBehaviour:
     xMax: 8
     yMin: -4
     yMax: 4
-  shotsPerSecond: 0.4
+  shotsPerSecond: 0.5
   missile: {fileID: 1611205107740974, guid: 9a9d15160c7dcfc4491e27353d0038c2, type: 2}
   missileSpawn: {fileID: 4128087363168400}
 --- !u!114 &114938103668497708
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 3
+  invincible: 0
   points: 0
   deathAnimation: {fileID: 0}
 --- !u!212 &212109329651957634

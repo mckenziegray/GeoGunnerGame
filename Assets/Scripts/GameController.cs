@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
 	public int[] waveSizes;
 
 	public float powerupSpawnPercent;
-	public GameObject PowerupShield;
+	public GameObject[] powerups;
 
 	public GameObject HPCellFull;
 	public GameObject HPCellEmpty;
@@ -46,11 +46,8 @@ public class GameController : MonoBehaviour {
 
 		shieldToggle = GameObject.FindWithTag ("Player").GetComponent<ToggleDisplay> ();
 		shieldToggle.hide ();
+
 		playerHP = GameObject.FindWithTag ("Player").GetComponent<HitPoints> ();
-		HPCells = new GameObject[playerHP.maxHP];
-		shieldCells = new GameObject[maxShields];
-		HPCellFull.GetComponent<SpriteRenderer> ().color = Color.green;
-		HPCellEmpty.GetComponent<SpriteRenderer> ().color = new Color (0.9f, 1f, 0.9f, 1f); //Pale green
 		createHPBar ();
 
 		hazards = new GameObject[][] { hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5 };
@@ -65,6 +62,11 @@ public class GameController : MonoBehaviour {
 
 	private void createHPBar()
 	{
+		HPCells = new GameObject[playerHP.maxHP];
+		shieldCells = new GameObject[maxShields];
+		HPCellFull.GetComponent<SpriteRenderer> ().color = Color.green;
+		HPCellEmpty.GetComponent<SpriteRenderer> ().color = new Color (0.9f, 1f, 0.9f, 1f); //Pale green
+
 		Vector2 cellLocation; 
 		for (lastFullCell = 0; lastFullCell < HPCells.Length; lastFullCell++)
 		{
@@ -96,6 +98,17 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	public void healPlayer(int healAmt) {
+		for (int i = 0; i < healAmt; i++) {
+			if (lastFullCell == playerHP.maxHP-1)
+				break;
+			playerHP.Heal (1);
+			Vector2 cellLocation = new Vector2 (HPBarPosition.x + (HPCellSpacing * (++lastFullCell)), HPBarPosition.y);
+			Destroy (HPCells [lastFullCell].gameObject);
+			HPCells[lastFullCell] = Instantiate (HPCellFull, cellLocation, Quaternion.identity);
+		}
+	}
+
 	public void giveShield()
 	{
 		if (numShields == 0)
@@ -114,7 +127,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	private void updateScoreText() {
-		scoreText.text = "Score: " + score;
+		scoreText.text = score.ToString();
 	}
 
 	IEnumerator spawnHazards()
@@ -132,7 +145,7 @@ public class GameController : MonoBehaviour {
 
 			int r = Random.Range (0, 10000);
 			if (r < powerupSpawnPercent * 100)
-				Instantiate (PowerupShield, spawnLocation, Quaternion.identity);
+				Instantiate (powerups[r % powerups.Length], spawnLocation, Quaternion.identity);
 			else {
 				r = Random.Range (0, 10000);
 				int hazardType;
