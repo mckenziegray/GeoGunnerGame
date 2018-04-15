@@ -156,7 +156,7 @@ MonoBehaviour:
     xMax: 8
     yMin: -4
     yMax: 4
-  shotsPerSecond: 0.5
+  secondsBetweenShots: 0.5
   missile: {fileID: 1759098317821686, guid: b954d7c925213ba4e83315612838c95c, type: 2}
   missileSpawn: {fileID: 4931344991804690}
 --- !u!114 &114321202554662392

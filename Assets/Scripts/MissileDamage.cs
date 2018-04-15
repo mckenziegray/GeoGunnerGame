@@ -11,7 +11,7 @@ public class MissileDamage : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
-		if (other.tag != "Player" && other.tag != "Boundary") {
+		if (other.tag == "Hazard") {
 			other.gameObject.GetComponent<HitPoints> ().Damage (damageAmount);
 			Destroy (this.gameObject);
 		}

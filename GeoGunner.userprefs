@@ -1,19 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Mover.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MissileDamage.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="23" Column="54" NotebookId="1" />
-      <File FileName="Assets\Scripts\HitPoints.cs" Line="1" Column="26" NotebookId="1" />
-      <File FileName="Assets\Scripts\Mover.cs" Line="13" Column="2" NotebookId="1" />
-      <File FileName="Assets\Scripts\DestroyByBoundary.cs" Line="8" Column="30" NotebookId="1" />
-      <File FileName="Assets\Scripts\DestroyByContact.cs" Line="12" Column="20" NotebookId="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="83" Column="37" NotebookId="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="15" Column="34" NotebookId="1" />
+      <File FileName="Assets\Scripts\HitPoints.cs" Line="36" Column="3" NotebookId="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="53" Column="110" NotebookId="1" />
       <File FileName="Assets\Scripts\MissileDamage.cs" Line="18" Column="3" NotebookId="1" />
+      <File FileName="Assets\Scripts\PickupShield.cs" Line="16" Column="30" NotebookId="1" />
+      <File FileName="Assets\Scripts\ToggleDisplay.cs" Line="16" Column="9" NotebookId="1" />
+      <File FileName="Assets\Scripts\PickupHeal.cs" Line="5" Column="27" NotebookId="1" />
+      <File FileName="Assets\Scripts\PickupFireRatePowerup.cs" Line="15" Column="4" NotebookId="1" />
+      <File FileName="Assets\Scripts\PowerupManager.cs" Line="13" Column="83" NotebookId="1" />
+      <File FileName="Assets\Scripts\PickupSpeedPowerup.cs" Line="13" Column="87" NotebookId="1" />
     </Files>
     <FloatingWindows>
       <FloatingWindow WindowId="1" X="-32000" Y="-32000" Width="1600" Height="837">
         <Files>
-          <File FileName="..\Space Shooter\Assets\Scripts\GameController.cs" Line="3" Column="19" />
+          <File FileName="..\Space Shooter\Assets\Scripts\GameController.cs" Line="72" Column="20" />
         </Files>
       </FloatingWindow>
     </FloatingWindows>

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 61540570495452992}
   m_Layer: 0
   m_Name: Hazard Square Red
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e40e94e7b761a545a431c0d64c0b9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 4
+  maxHP: 0
+  invincible: 0
   points: 120
   deathAnimation: {fileID: 0}
 --- !u!212 &212307766936229330

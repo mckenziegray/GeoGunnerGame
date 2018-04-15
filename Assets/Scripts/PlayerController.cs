@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float speed;
 	public Boundary boundary;
-	public float shotsPerSecond;
+	public float secondsBetweenShots;
 	private float nextShot;
 
 	public GameObject missile;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () 
 	{
 		if (Input.GetButton ("Fire1") && Time.time > nextShot) {
-			nextShot = Time.time + shotsPerSecond;
+			nextShot = Time.time + secondsBetweenShots;
 			Instantiate (missile, missileSpawn.position, missileSpawn.rotation);
 		}
 	}

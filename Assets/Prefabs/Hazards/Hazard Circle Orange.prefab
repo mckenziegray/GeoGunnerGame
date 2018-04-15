@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114285921384000736}
   m_Layer: 0
   m_Name: Hazard Circle Orange
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e40e94e7b761a545a431c0d64c0b9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 3
+  maxHP: 0
+  invincible: 0
   points: 180
   deathAnimation: {fileID: 0}
 --- !u!114 &114519294991963544

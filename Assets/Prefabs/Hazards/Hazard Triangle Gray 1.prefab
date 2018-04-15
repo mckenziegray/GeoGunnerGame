@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 60712617536703412}
   m_Layer: 0
   m_Name: Hazard Triangle Gray 1
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e40e94e7b761a545a431c0d64c0b9e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 2
+  maxHP: 0
+  invincible: 0
   points: 200
   deathAnimation: {fileID: 0}
 --- !u!114 &114334493072990422

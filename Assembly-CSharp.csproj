@@ -57,9 +57,10 @@
      <Compile Include="Assets\Scripts\HitPoints.cs" />
      <Compile Include="Assets\Scripts\MissileDamage.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
-     <Compile Include="Assets\Scripts\PickupDamagePowerup.cs" />
+     <Compile Include="Assets\Scripts\PickupFireRatePowerup.cs" />
      <Compile Include="Assets\Scripts\PickupHeal.cs" />
      <Compile Include="Assets\Scripts\PickupShield.cs" />
+     <Compile Include="Assets\Scripts\PickupSpeedPowerup.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PowerupManager.cs" />
      <Compile Include="Assets\Scripts\ToggleDisplay.cs" />
