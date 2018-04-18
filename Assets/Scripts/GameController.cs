@@ -156,6 +156,7 @@ public class GameController : MonoBehaviour {
 		};
 
 		for (int i = 1; i <= numberOfWaves; i++) {
+			//Increase chances of spawning more powerful hazards
 			for (int j = 0; j + 1 < hazardLevelChances.Length; j++) {
 				int mod = 6 + (j * 2) - i;
 				if (mod >= 0 && mod < hazardPercentages.Length) {

@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3f2eab4f6312b48adf20a01a2149ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotDelayReduction: 0.25
+  shotDelayReduction: 0.2
   durationSeconds: 15
 --- !u!212 &212874957194328212
 SpriteRenderer:
