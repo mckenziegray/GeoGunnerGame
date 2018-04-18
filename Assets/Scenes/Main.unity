@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 155116986}
   - component: {fileID: 155116985}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872c2721544270043b2d77588640ba7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainText: {fileID: 1269735973}
   hazardsLevel1:
   - {fileID: 1833438008649028, guid: bcd4c67058ef35c4d9500046a1600fbd, type: 2}
   - {fileID: 1788419658766318, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
@@ -241,9 +242,11 @@ MonoBehaviour:
   - {fileID: 1660966078405632, guid: 5bfe0d3867d3c9741adcc37425360c85, type: 2}
   spawnPosition: {x: 10, y: 4}
   startWait: 4
-  spawnWait: 0.5
+  spawnWait: 0.75
   waveSizes: 320000003200000032000000320000003200000032000000320000003200000032000000
-  powerupSpawnPercent: 10
+  numberOfWaves: 9
+  waveTextDisplayTime: 2
+  powerupSpawnPercent: 2
   powerups:
   - {fileID: 1571638536972862, guid: 80a235ec18fc8a74f9ffa4d6359f2aba, type: 2}
   - {fileID: 1609574692547610, guid: 8c9553f5cedc330429e498056de8abef, type: 2}
@@ -255,7 +258,7 @@ MonoBehaviour:
   HPBarPosition: {x: -8.5, y: 4.5}
   HPCellSpacing: 0.5
   ShieldCell: {fileID: 1567854307501782, guid: 3a007edbc5636a542aae97ade1952166, type: 2}
-  maxShields: 10
+  maxShields: 3
   scoreText: {fileID: 155116985}
 --- !u!4 &436946280
 Transform:
@@ -405,7 +408,7 @@ Prefab:
     - target: {fileID: 114461058038833608, guid: b48f49139d89f854bb5df2080b4e13b3,
         type: 2}
       propertyPath: secondsBetweenShots
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b48f49139d89f854bb5df2080b4e13b3, type: 2}
@@ -491,6 +494,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1269735971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1269735972}
+  - component: {fileID: 1269735974}
+  - component: {fileID: 1269735973}
+  m_Layer: 5
+  m_Name: Main Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1269735972
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269735971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1923653151}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 320, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1269735973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269735971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 36
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1269735974
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1269735971}
 --- !u!1 &1461914671
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +727,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 155116984}
+  - {fileID: 1269735972}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

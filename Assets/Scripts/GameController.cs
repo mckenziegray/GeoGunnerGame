@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class GameController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class GameController : MonoBehaviour {
 		RhombusGray, RhombusYellow, RhombusOrange, RhombusRed, RhombusBlack }*/
 	enum HazardType { Square, Circle, Triangle, Rhombus }
 
+	public Text mainText;
 	private const int NUM_HAZARD_LEVELS = 5;
 	private GameObject[][] hazards;
 	public GameObject[] hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5;
@@ -18,6 +20,11 @@ public class GameController : MonoBehaviour {
 	public float startWait;
 	public float spawnWait;
 	public int[] waveSizes;
+	public int numberOfWaves;
+	private float[] hazardPercentages;
+	private float[] hazardTypeChances;
+	private float[] hazardLevelChances;
+	public float waveTextDisplayTime;
 
 	public float powerupSpawnPercent;
 	public GameObject[] powerups;
@@ -51,6 +58,7 @@ public class GameController : MonoBehaviour {
 		createHPBar ();
 
 		hazards = new GameObject[][] { hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5 };
+		hazardPercentages = new float[] { 0.15f, 2.35f, 13.5f, 34f, 34f, 13.5f, 2.35f, 0.15f };
 
 		StartCoroutine (spawnHazards());
 	}
@@ -132,36 +140,111 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator spawnHazards()
 	{
-		while (true) {
+		hazardTypeChances = new float[] { 
+			(100f - hazardPercentages [0] - hazardPercentages [1]) * 100, 
+			(hazardPercentages [1] + hazardPercentages [0]) * 100,
+			0f,
+			0f
+		};
+
+		hazardLevelChances = new float[] {
+			(100f - hazardPercentages [0] - hazardPercentages [1]) * 100, 
+			(hazardPercentages [0] + hazardPercentages [1]) * 100,
+			0f, 
+			0f, 
+			0f
+		};
+
+		for (int i = 1; i <= numberOfWaves; i++) {
+			for (int j = 0; j + 1 < hazardLevelChances.Length; j++) {
+				int mod = 6 + (j * 2) - i;
+				if (mod >= 0 && mod < hazardPercentages.Length) {
+					hazardLevelChances [j] -= hazardPercentages [mod] * 100;
+					hazardLevelChances [j + 1] += hazardPercentages [mod] * 100;
+				}
+			}
+
+			for (int j = 0; j + 1 < hazardTypeChances.Length; j++) {
+				int mod = 6 + (j * 3) - i;
+				if (mod >= 0 && mod < hazardPercentages.Length) {
+					hazardTypeChances [j] -= hazardPercentages [mod] * 100;
+					hazardTypeChances [j + 1] += hazardPercentages [mod] * 100;
+				}
+			}
+
+			/*Debug.Log ("Colors:");
+			foreach (float j in hazardLevelChances) {
+				Debug.Log (j);
+			}
+			Debug.Log ("Shapes:");
+			foreach (float j in hazardTypeChances) {
+				Debug.Log (j);
+			}*/
+
 			yield return new WaitForSeconds (startWait);
-			yield return StartCoroutine (wave1());
+			mainText.text = "Wave " + i;
+			yield return new WaitForSeconds (waveTextDisplayTime);
+			mainText.text = "";
+			yield return StartCoroutine (spawnWave ());
 		}
 	}
 
-	IEnumerator wave1()
+	IEnumerator spawnWave()
 	{
 		for (int i = 0; i < waveSizes [0]; i++) {
-			Vector2 spawnLocation = new Vector2 (spawnPosition.x, Random.Range (-spawnPosition.y, spawnPosition.y));
+			Vector2 spawnLocation = new Vector2 (spawnPosition.x, UnityEngine.Random.Range (-spawnPosition.y, spawnPosition.y));
 
-			int r = Random.Range (0, 10000);
+			int r = UnityEngine.Random.Range (0, 10000);
 			if (r < powerupSpawnPercent * 100)
 				Instantiate (powerups[r % powerups.Length], spawnLocation, Quaternion.identity);
 			else {
-				r = Random.Range (0, 10000);
+				//Determine shape
+				r = UnityEngine.Random.Range (0, 10000);
+				Debug.Log ("Shape roll: " + r);
 				int hazardType;
-				if (r < 8400)
+				if (r < hazardTypeChances [0]) {
 					hazardType = (int)HazardType.Square;
-				else
+					Debug.Log ("Square");
+				}
+				else if (r < hazardTypeChances[0] + hazardTypeChances[1]) {
 					hazardType = (int)HazardType.Circle;
+					Debug.Log ("Circle");
+				}
+				else if (r < hazardTypeChances[0] + hazardTypeChances[1] + hazardTypeChances[2]) {
+					hazardType = (int)HazardType.Triangle;
+					Debug.Log ("Triangle");
+				}
+				else {
+					hazardType = (int)HazardType.Rhombus;
+					Debug.Log ("Rhumbus");
+				}
 
+				//Determine color
+				r = UnityEngine.Random.Range (0, 10000);
+				Debug.Log ("Color roll: " + r);
 				int hazardLevel;
-				r = Random.Range (0, 10000);
-				if (r < 8400)
+				if (r < hazardLevelChances [0]) {
 					hazardLevel = 0;
-				else if (r < 9985)
+					Debug.Log ("Gray");
+				}
+				else if (r < hazardLevelChances [0] + hazardLevelChances [1]) {
 					hazardLevel = 1;
-				else
+					Debug.Log ("Yellow");
+				}
+				else if (r < hazardLevelChances [0] + hazardLevelChances [1] 
+					+ hazardLevelChances [2]) {
 					hazardLevel = 2;
+					Debug.Log ("Orange");
+				}
+				else if (r < hazardLevelChances [0] + hazardLevelChances [1] 
+					+ hazardLevelChances [2] + hazardLevelChances [3]) {
+					hazardLevel = 3;
+					Debug.Log ("Red");
+				}
+				else {
+					hazardLevel = 4;
+					Debug.Log ("Black");
+				}
 
 				Instantiate (hazards [hazardLevel][hazardType], spawnLocation, Quaternion.identity);
 				yield return new WaitForSeconds (spawnWait);
