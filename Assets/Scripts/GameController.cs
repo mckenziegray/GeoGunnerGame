@@ -62,11 +62,6 @@ public class GameController : MonoBehaviour {
 
 		StartCoroutine (spawnHazards());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	private void createHPBar()
 	{
