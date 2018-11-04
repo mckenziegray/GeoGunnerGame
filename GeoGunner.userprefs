@@ -1,28 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SelectOnInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ChangeColorOfSelected.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\HitPoints.cs" Line="21" Column="6" NotebookId="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="172" Column="65" NotebookId="1" />
-      <File FileName="Assets\Scripts\MissileDamage.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PickupShield.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\ToggleDisplay.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PickupHeal.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PickupFireRatePowerup.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PowerupManager.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\PickupSpeedPowerup.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Scripts\LoadSceneOnClick.cs" Line="11" Column="3" NotebookId="1" />
-      <File FileName="Assets\Scripts\QuitOnClick.cs" Line="12" Column="22" NotebookId="1" />
-      <File FileName="Assets\Scripts\SelectOnInput.cs" Line="31" Column="3" NotebookId="1" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="65" Column="2" />
+      <File FileName="Assets\Scripts\LoadSceneOnClick.cs" Line="11" Column="3" />
+      <File FileName="Assets\Scripts\ChangeColor.cs" Line="6" Column="43" />
+      <File FileName="Assets\Scripts\ChangeColorOfSelected.cs" Line="19" Column="16" />
+      <File FileName="Assets\Scripts\ToggleDisplay.cs" Line="21" Column="21" />
     </Files>
-    <FloatingWindows>
-      <FloatingWindow WindowId="1" X="-32000" Y="-32000" Width="1600" Height="837">
-        <Files>
-          <File FileName="..\Space Shooter\Assets\Scripts\GameController.cs" Line="72" Column="20" />
-        </Files>
-      </FloatingWindow>
-    </FloatingWindows>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
