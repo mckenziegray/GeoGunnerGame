@@ -36,7 +36,7 @@ public class HitPoints : MonoBehaviour {
 	{
 		if (this.deathAnimation != null)
 			Instantiate (deathAnimation, transform.position, transform.rotation);
-
+		GameObject.FindWithTag ("GameController").GetComponent<GameController> ().addScore (points);
 		Destroy (this.gameObject);
 	}
 }
