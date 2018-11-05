@@ -13,10 +13,13 @@ public class GameController : MonoBehaviour {
 	enum HazardType { Square, Circle, Triangle, Rhombus }
 
 	public Text mainText;
+	public GameObject[] players;
+	private GameObject player;
+
 	private const int NUM_HAZARD_LEVELS = 5;
 	private GameObject[][] hazards;
 	public GameObject[] hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5;
-	public Vector2 spawnPosition;
+	public Vector2 hazardSpawnPosition;
 	public float startWait;
 	public float spawnWait;
 	public int[] waveSizes;
@@ -48,17 +51,31 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		foreach (GameObject p in players) {
+			p.SetActive (false);
+		}
+
 		score = 0;
 		updateScoreText ();
 
-		shieldToggle = GameObject.FindWithTag ("Player").GetComponent<ToggleDisplay> ();
+		player = players[PlayerPrefs.GetInt ("player", 0)];
+		player.GetComponent<SpriteRenderer> ().color = new Color (
+			PlayerPrefs.GetFloat ("player-r"),
+			PlayerPrefs.GetFloat ("player-g"),
+			PlayerPrefs.GetFloat ("player-b")
+		);
+
+		player.SetActive (true);
+
+		shieldToggle = player.GetComponent<ToggleDisplay> ();
 		shieldToggle.hide ();
 
-		playerHP = GameObject.FindWithTag ("Player").GetComponent<HitPoints> ();
+		playerHP = player.GetComponent<HitPoints> ();
 		createHPBar ();
 
 		hazards = new GameObject[][] { hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5 };
 		hazardPercentages = new float[] { 0.15f, 2.35f, 13.5f, 34f, 34f, 13.5f, 2.35f, 0.15f };
+
 
 		StartCoroutine (spawnHazards());
 	}
@@ -188,7 +205,7 @@ public class GameController : MonoBehaviour {
 	IEnumerator spawnWave()
 	{
 		for (int i = 0; i < waveSizes [0]; i++) {
-			Vector2 spawnLocation = new Vector2 (spawnPosition.x, UnityEngine.Random.Range (-spawnPosition.y, spawnPosition.y));
+			Vector2 spawnLocation = new Vector2 (hazardSpawnPosition.x, UnityEngine.Random.Range (-hazardSpawnPosition.y, hazardSpawnPosition.y));
 
 			int r = UnityEngine.Random.Range (0, 10000);
 			if (r < powerupSpawnPercent * 100)

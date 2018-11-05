@@ -8,7 +8,7 @@ public class ToggleDisplay : MonoBehaviour {
 	public GameObject itemToToggle;
 	private Renderer r;
 
-	void Start() {
+	void Awake() {
 		r = itemToToggle.GetComponent<Renderer> ();
 		r.enabled = startsEnabled;
 	}
