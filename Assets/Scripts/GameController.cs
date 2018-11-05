@@ -13,9 +13,8 @@ public class GameController : MonoBehaviour {
 	enum HazardType { Square, Circle, Triangle, Rhombus }
 
 	public Text mainText;
-
-	public GameObject[] playerPrefabs;
-	public Vector2 playerSpawnPosition;
+	public GameObject[] players;
+	private GameObject player;
 
 	private const int NUM_HAZARD_LEVELS = 5;
 	private GameObject[][] hazards;
@@ -52,25 +51,31 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		foreach (GameObject p in players) {
+			p.SetActive (false);
+		}
+
 		score = 0;
 		updateScoreText ();
 
-		shieldToggle = GameObject.FindWithTag ("Player").GetComponent<ToggleDisplay> ();
+		player = players[PlayerPrefs.GetInt ("player", 0)];
+		player.GetComponent<SpriteRenderer> ().color = new Color (
+			PlayerPrefs.GetFloat ("player-r"),
+			PlayerPrefs.GetFloat ("player-g"),
+			PlayerPrefs.GetFloat ("player-b")
+		);
+
+		player.SetActive (true);
+
+		shieldToggle = player.GetComponent<ToggleDisplay> ();
 		shieldToggle.hide ();
 
-		playerHP = GameObject.FindWithTag ("Player").GetComponent<HitPoints> ();
+		playerHP = player.GetComponent<HitPoints> ();
 		createHPBar ();
 
 		hazards = new GameObject[][] { hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5 };
 		hazardPercentages = new float[] { 0.15f, 2.35f, 13.5f, 34f, 34f, 13.5f, 2.35f, 0.15f };
 
-		int player = PlayerPrefs.GetInt ("player", 0);
-		playerPrefabs [player].GetComponent<SpriteRenderer> ().color = new Color (
-			PlayerPrefs.GetFloat ("player-r"),
-			PlayerPrefs.GetFloat ("player-g"),
-			PlayerPrefs.GetFloat ("player-b")
-		);
-		Instantiate (playerPrefabs[player], playerSpawnPosition, Quaternion.identity);
 
 		StartCoroutine (spawnHazards());
 	}

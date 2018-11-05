@@ -6,6 +6,9 @@ public class HitPoints : MonoBehaviour {
 
 	public int maxHP;
 	private int currentHP;
+	public bool invincible;
+	public int points;
+	public GameObject deathAnimation;
 
 	// Use this for initialization
 	void Start () {
@@ -14,10 +17,12 @@ public class HitPoints : MonoBehaviour {
 	
 	public void Damage (int damage)
 	{
-		this.currentHP -= damage;
-		if (this.currentHP <= 0) {
-			this.currentHP = 0;
-			this.Die ();
+		if (!invincible) {
+			this.currentHP -= damage;
+			if (this.currentHP <= 0) {
+				this.currentHP = 0;
+				this.Die ();
+			}
 		}
 	}
 	public void Heal(int healing)
@@ -29,5 +34,9 @@ public class HitPoints : MonoBehaviour {
 
 	private void Die ()
 	{
+		if (this.deathAnimation != null)
+			Instantiate (deathAnimation, transform.position, transform.rotation);
+
+		Destroy (this.gameObject);
 	}
 }
