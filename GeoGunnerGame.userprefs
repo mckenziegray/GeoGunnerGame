@@ -1,11 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HitPoints.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Editor\PlayerPrefsScript.cs">
     <Files>
       <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ToggleDisplay.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\MissileDamage.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\HitPoints.cs" Line="41" Column="3" />
+      <File FileName="Assets\Scripts\HitPoints.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Editor\PlayerPrefsScript.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

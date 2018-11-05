@@ -60,9 +60,9 @@ public class GameController : MonoBehaviour {
 
 		player = players[PlayerPrefs.GetInt ("player", 0)];
 		player.GetComponent<SpriteRenderer> ().color = new Color (
-			PlayerPrefs.GetFloat ("player-r"),
-			PlayerPrefs.GetFloat ("player-g"),
-			PlayerPrefs.GetFloat ("player-b")
+			PlayerPrefs.GetFloat ("player-r", UnityEngine.Random.Range(0.0f, 1.0f)),
+			PlayerPrefs.GetFloat ("player-g", UnityEngine.Random.Range(0.0f, 1.0f)),
+			PlayerPrefs.GetFloat ("player-b", UnityEngine.Random.Range(0.0f, 1.0f))
 		);
 
 		player.SetActive (true);
@@ -75,7 +75,6 @@ public class GameController : MonoBehaviour {
 
 		hazards = new GameObject[][] { hazardsLevel1, hazardsLevel2, hazardsLevel3, hazardsLevel4, hazardsLevel5 };
 		hazardPercentages = new float[] { 0.15f, 2.35f, 13.5f, 34f, 34f, 13.5f, 2.35f, 0.15f };
-
 
 		StartCoroutine (spawnHazards());
 	}
