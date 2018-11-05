@@ -16,8 +16,9 @@ public class ChangeColorOfSelected : MonoBehaviour {
 	void Start() {
 		foreach (Image border in borders)
 			border.enabled = false;
-		selected = 0;
-		select (0);
+
+		selected = PlayerPrefs.GetInt("player", 0);
+		select (selected);
 
 		rSlider.onValueChanged.AddListener (delegate {
 			changeRed ();
@@ -28,6 +29,10 @@ public class ChangeColorOfSelected : MonoBehaviour {
 		bSlider.onValueChanged.AddListener (delegate {
 			changeBlue ();
 		});
+
+		rSlider.value = PlayerPrefs.GetFloat ("player-r", 0.0f);
+		gSlider.value = PlayerPrefs.GetFloat ("player-g", 0.0f);
+		bSlider.value = PlayerPrefs.GetFloat ("player-b", 0.0f);
 	}
 
 	public void select(int index)
@@ -36,6 +41,10 @@ public class ChangeColorOfSelected : MonoBehaviour {
 			borders [selected].enabled = false;
 			selected = index;
 			borders [index].enabled = true;
+
+			rSlider.value = players [selected].GetComponent<Image> ().color.r;
+			gSlider.value = players [selected].GetComponent<Image> ().color.g;
+			bSlider.value = players [selected].GetComponent<Image> ().color.b;
 		}
 		else
 			Debug.Log (index + " outside index range");
@@ -54,5 +63,13 @@ public class ChangeColorOfSelected : MonoBehaviour {
 	private void changeBlue()
 	{
 		players[selected].GetComponent<ChangeColor> ().setBlue (bSlider.value);
+	}
+
+	public void ConfirmSelection()
+	{
+		PlayerPrefs.SetInt("player", selected);
+		PlayerPrefs.SetFloat("player-r", players[selected].GetComponent<Image> ().color.r);
+		PlayerPrefs.SetFloat("player-g", players[selected].GetComponent<Image> ().color.g);
+		PlayerPrefs.SetFloat("player-b", players[selected].GetComponent<Image> ().color.b);
 	}
 }
