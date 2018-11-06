@@ -275,6 +275,7 @@ public class GameController : MonoBehaviour {
 		bool newHighScore = PlayerPrefsUtils.AddHighScore (score);
 
 		if (win) {
+			// TODO
 		} 
 		else {
 			gameOverPanel.SetActive (true);

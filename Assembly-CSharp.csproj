@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\DestroyByBoundary.cs" />
      <Compile Include="Assets\Scripts\DestroyByContact.cs" />
      <Compile Include="Assets\Scripts\DisplayPlayer.cs" />
+     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\Globals.cs" />
      <Compile Include="Assets\Scripts\HitPoints.cs" />

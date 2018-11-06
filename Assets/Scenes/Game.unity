@@ -113,6 +113,29 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &109262109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1788419658766318, guid: 6a164c3189d6a70428cf7a89427131db,
+    type: 2}
+  m_PrefabInternal: {fileID: 1170441121}
+--- !u!114 &109262110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109262109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17d5c0f51eb7f54189f373d9b27c9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  horizontalPosition: 0
+  minY: 0
+  maxY: 0
+  secondsBetweenShots: 0
+  missile: {fileID: 0}
+  missileSpawn: {fileID: 0}
 --- !u!1 &155116983
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +328,11 @@ Prefab:
     - target: {fileID: 1478067512635000, guid: 8a0a70aef150e40438c83dcd090a53db, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105835010767480, guid: 8a0a70aef150e40438c83dcd090a53db,
+        type: 2}
+      propertyPath: boundary.xMax
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a70aef150e40438c83dcd090a53db, type: 2}
@@ -1010,6 +1038,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114705760445906980, guid: d101f01ff5bc4cf46980e76cc150880f,
+        type: 2}
+      propertyPath: boundary.xMax
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d101f01ff5bc4cf46980e76cc150880f, type: 2}
   m_IsPrefabAsset: 0
@@ -1349,6 +1382,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114027796347849672, guid: bd9c16363a3f91b4f9c20f853aaa6ec1,
+        type: 2}
+      propertyPath: boundary.xMax
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd9c16363a3f91b4f9c20f853aaa6ec1, type: 2}
   m_IsPrefabAsset: 0
@@ -1420,8 +1458,61 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114461058038833608, guid: b48f49139d89f854bb5df2080b4e13b3,
+        type: 2}
+      propertyPath: boundary.xMax
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b48f49139d89f854bb5df2080b4e13b3, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &1170441121
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435069908215190, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1788419658766318, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_Name
+      value: Enemy Circle Gray
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114046705011910846, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+    - {fileID: 114498053880214392, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1201420012
 GameObject:
