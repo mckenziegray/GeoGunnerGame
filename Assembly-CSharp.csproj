@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MissileDamage.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
+     <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PickupFireRatePowerup.cs" />
      <Compile Include="Assets\Scripts\PickupHeal.cs" />
      <Compile Include="Assets\Scripts\PickupShield.cs" />
