@@ -1509,6 +1509,10 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Circle Gray
       objectReference: {fileID: 0}
+    - target: {fileID: 1788419658766318, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114046705011910846, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
     - {fileID: 114498053880214392, guid: 6a164c3189d6a70428cf7a89427131db, type: 2}
