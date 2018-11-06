@@ -49,20 +49,26 @@ public class GameController : MonoBehaviour {
 	private int score;
 	public Text scoreText;
 
+	public GameObject gameOverPanel;
+	public Text gameOverScoreText;
+	public Text gameOverHighScoreText;
+
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject p in players) {
 			p.SetActive (false);
 		}
 
+		gameOverPanel.SetActive (false);
+
 		score = 0;
 		updateScoreText ();
 
-		player = players[PlayerPrefs.GetInt ("player", 0)];
+		player = players[PlayerPrefs.GetInt (Globals.PP_PLAYER_UNIT, 0)];
 		player.GetComponent<SpriteRenderer> ().color = new Color (
-			PlayerPrefs.GetFloat ("player-r", UnityEngine.Random.Range(0.0f, 1.0f)),
-			PlayerPrefs.GetFloat ("player-g", UnityEngine.Random.Range(0.0f, 1.0f)),
-			PlayerPrefs.GetFloat ("player-b", UnityEngine.Random.Range(0.0f, 1.0f))
+			PlayerPrefs.GetFloat (Globals.PP_PLAYER_COLOR_RED, UnityEngine.Random.Range(0.0f, 1.0f)),
+			PlayerPrefs.GetFloat (Globals.PP_PLAYER_COLOR_GREEN, UnityEngine.Random.Range(0.0f, 1.0f)),
+			PlayerPrefs.GetFloat (Globals.PP_PLAYER_COLOR_BLUE, UnityEngine.Random.Range(0.0f, 1.0f))
 		);
 
 		player.SetActive (true);
@@ -212,55 +218,68 @@ public class GameController : MonoBehaviour {
 			else {
 				//Determine shape
 				r = UnityEngine.Random.Range (0, 10000);
-				Debug.Log ("Shape roll: " + r);
+				//Debug.Log ("Shape roll: " + r);
 				int hazardType;
 				if (r < hazardTypeChances [0]) {
 					hazardType = (int)HazardType.Square;
-					Debug.Log ("Square");
+					//Debug.Log ("Square");
 				}
 				else if (r < hazardTypeChances[0] + hazardTypeChances[1]) {
 					hazardType = (int)HazardType.Circle;
-					Debug.Log ("Circle");
+					//Debug.Log ("Circle");
 				}
 				else if (r < hazardTypeChances[0] + hazardTypeChances[1] + hazardTypeChances[2]) {
 					hazardType = (int)HazardType.Triangle;
-					Debug.Log ("Triangle");
+					//Debug.Log ("Triangle");
 				}
 				else {
 					hazardType = (int)HazardType.Rhombus;
-					Debug.Log ("Rhumbus");
+					//Debug.Log ("Rhumbus");
 				}
 
 				//Determine color
 				r = UnityEngine.Random.Range (0, 10000);
-				Debug.Log ("Color roll: " + r);
+				//Debug.Log ("Color roll: " + r);
 				int hazardLevel;
 				if (r < hazardLevelChances [0]) {
 					hazardLevel = 0;
-					Debug.Log ("Gray");
+					//Debug.Log ("Gray");
 				}
 				else if (r < hazardLevelChances [0] + hazardLevelChances [1]) {
 					hazardLevel = 1;
-					Debug.Log ("Yellow");
+					//Debug.Log ("Yellow");
 				}
 				else if (r < hazardLevelChances [0] + hazardLevelChances [1] 
 					+ hazardLevelChances [2]) {
 					hazardLevel = 2;
-					Debug.Log ("Orange");
+					//Debug.Log ("Orange");
 				}
 				else if (r < hazardLevelChances [0] + hazardLevelChances [1] 
 					+ hazardLevelChances [2] + hazardLevelChances [3]) {
 					hazardLevel = 3;
-					Debug.Log ("Red");
+					//Debug.Log ("Red");
 				}
 				else {
 					hazardLevel = 4;
-					Debug.Log ("Black");
+					//Debug.Log ("Black");
 				}
 
 				Instantiate (hazards [hazardLevel][hazardType], spawnLocation, Quaternion.identity);
 				yield return new WaitForSeconds (spawnWait);
 			}
+		}
+	}
+
+	public void EndGame(bool win)
+	{
+		bool newHighScore = PlayerPrefsUtils.AddHighScore (score);
+
+		if (win) {
+		} 
+		else {
+			gameOverPanel.SetActive (true);
+			gameOverScoreText.text = score.ToString ();
+			gameOverHighScoreText.text = newHighScore ? "New high score!" : "High: " + PlayerPrefs.GetInt (Globals.PP_HIGH_SCORES [0]).ToString();
 		}
 	}
 }

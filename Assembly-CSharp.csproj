@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\DestroyByContact.cs" />
      <Compile Include="Assets\Scripts\DisplayPlayer.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\Globals.cs" />
      <Compile Include="Assets\Scripts\HitPoints.cs" />
      <Compile Include="Assets\Scripts\LoadSceneOnClick.cs" />
      <Compile Include="Assets\Scripts\MissileDamage.cs" />
@@ -69,6 +70,7 @@
      <Compile Include="Assets\Scripts\PickupShield.cs" />
      <Compile Include="Assets\Scripts\PickupSpeedPowerup.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlayerPrefsUtils.cs" />
      <Compile Include="Assets\Scripts\PowerupManager.cs" />
      <Compile Include="Assets\Scripts\QuitOnClick.cs" />
      <Compile Include="Assets\Scripts\SelectOnInput.cs" />
